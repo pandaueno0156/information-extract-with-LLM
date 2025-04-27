@@ -1,6 +1,6 @@
 # SEEK Industry project - AdSeek
 
-This project focuses on processing, fine-tuning, and inference for job advertisement texts. It covers data cleaning, feature engineering, prompt tuning (Stage 1), LoRA-based lightweight fine-tuning (Stage 2), and advanced methods (Stage 3).
+This project focuses on processing, fine-tuning, and inference for job advertisement texts. It covers data cleaning, feature engineering (Stage 1), Prompt-tuning, LoRA-based lightweight fine-tuning, Agent (Stage 2), and advanced methods (Stage 3).
 
 ## 📂 Project Structure
 
@@ -66,7 +66,7 @@ python -m spacy download en_core_web_sm
 
 ---
 
-### 2. Batch Inference (Stage 1)
+### 2. Non fine-tuning methods (Stage 1)
 
 Use `Qwen25_inference.py` for batch inference:
 
@@ -90,7 +90,7 @@ python Stage1_prompt_only/Qwen25_inference.py \
 
 ---
 
-### 3. Prompt-tuning, LoRA Fine-Tuning and Agen (Stage 2)
+### 3. Prompt-tuning, LoRA Fine-Tuning and Agen (Stage 2) (Stage 2)
 
 Use `Qwen05_LoRA.py` for LoRA-based fine-tuning:
 
