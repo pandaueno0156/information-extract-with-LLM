@@ -1,0 +1,12 @@
+faker
+transformers>=4.35.0
+nlpaug
+datasets
+pyautogen
+torch>=2.0.0
+peft>=0.5.0
+anthropic>=0.3.11
+tqdm
+openai
+spacy
+nltk
