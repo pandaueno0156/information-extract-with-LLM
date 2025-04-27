@@ -90,7 +90,7 @@ python Stage1_prompt_only/Qwen25_inference.py \
 
 ---
 
-### 3. LoRA Fine-Tuning (Stage 2)
+### 3. Prompt-tuning, LoRA Fine-Tuning and Agen (Stage 2)
 
 Use `Qwen05_LoRA.py` for LoRA-based fine-tuning:
 
@@ -117,7 +117,29 @@ After inference or fine-tuning, evaluate results using `eval.py`:
 python eval.py
 ```
 
-Metrics include: Accuracy, Recall, Macro F1-score, etc.
+Metrics include: Self-defined Salary Accuracy, Accuracy, Recall, Macro F1-score, etc.
+
+For example:
+
+```
+ ==================== LoRA_05B_dapt_work_aug_results.json ====================
+Recall: 0.6583025830258302
+salary: 482 / 567 ----- 85.01%
+seniority: 356 / 689 ----- 51.67%
+work: 54 / 99 ----- 54.55%
+-------- sklearn metrics --------
+Accuracy: 0.6583
+Macro Recall: 0.5219
+Macro F1-score: 0.5235
+
+----- Salary Format Evaluation -----
+Min Salary Accuracy: 74.25%
+Max Salary Accuracy: 73.72%
+Currency Accuracy: 76.37%
+Frequency Accuracy: 74.60%
+Overall Average Accuracy: 74.74%
+---------------------------------------
+```
 
 ---
 
