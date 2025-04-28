@@ -18,7 +18,7 @@ AdSeek_ready2submit/
 │   ├── p_engineering_concat.py
 │   └── prompt_injection&combine.py
 │
-├── Stage0——reulebase/        # Stage 0: Rule-based model
+├── Stage0_rulebase/        # Stage 0: Rule-based model
 │   ├── rule-based_senority.py
 │   ├── rule-based_work_arrangement.py
 │   └── rule-based-salary.py
@@ -69,9 +69,20 @@ Additionally, for `spaCy` models:
 python -m spacy download en_core_web_sm
 ```
 
+### 2. Rule-based model (Stage 0) 
+
+Use `rule-based-salary.py` to extraction salary information:
+
+```bash
+python Stage0_rulebase/rule-based-salary.py \
+  --input_path "./job_data_files/raw-data/salary_labelled_test_set.csv" \
+  --output_path "./job_data_files/df_output_salary_rule_based_testset.csv"
+
+```
+
 ---
 
-### 2. Non fine-tuning methods (Stage 1)
+### 3. Non fine-tuning methods (Stage 1)
 
 Use `Qwen25_inference.py` for batch inference:
 
@@ -95,7 +106,7 @@ python Stage1_prompt_only/Qwen25_inference.py \
 
 ---
 
-### 3. Prompt-tuning, LoRA Fine-Tuning and Agen (Stage 2) 
+### 4. Prompt-tuning, LoRA Fine-Tuning and Synthetic Agent Data (Stage 2) 
 
 Use `Qwen05_LoRA.py` for LoRA-based fine-tuning:
 
@@ -114,7 +125,7 @@ Fine-tuning is performed on **Qwen2.5-0.5B-Instruct** using LoRA (Low-Rank Adapt
 
 ---
 
-### 4. Evaluation
+### 5. Evaluation
 
 After inference or fine-tuning, evaluate results using `eval.py`:
 
