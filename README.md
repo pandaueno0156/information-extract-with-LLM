@@ -1,6 +1,33 @@
-# SEEK Industry project - AdSeek
+# SEEK Industry project
 
-This project focuses on processing, fine-tuning, and inference for job advertisement texts. It covers data cleaning, rule-based model (Stage 0), feature engineering (Stage 1), Prompt-tuning, LoRA-based lightweight fine-tuning, Agent (Stage 2), and advanced methods (Stage 3).
+### Group: AdSeek
+
+### Team Members:
+
+Xiao Chen (z55****8)
+
+WanJie Mao (z55****9)
+
+Kunisuke Ishigaki (z54****3)
+
+Zhuo Chen (z55****3)
+
+
+---
+
+#### This project focuses on the processing, fine-tuning, and inference of job advertisement texts.
+#### It is structured across several stages:
+
+- Stage 0: Data Cleaning & Rule-Based Modeling
+
+- Stage 1: Prompt Engineering, Non fine-tuning methods
+
+- Stage 2: Prompt-Tuning, LoRA-Based Lightweight Fine-Tuning, Agent Development
+
+- Stage 3: Advanced Methods Exploration
+
+The project systematically progresses from initial data preparation to advanced model deployment.
+
 
 ## 📂 Project Structure
 
