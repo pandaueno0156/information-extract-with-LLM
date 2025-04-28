@@ -1,16 +1,16 @@
 # SEEK Industry project
 
-### Group: AdSeek
+## ⭐ Group: AdSeek
 
 ### Team Members:
 
-Xiao Chen (z55****8)
+Xiao Chen (z5545738)
 
-WanJie Mao (z55****9)
+WanJie Mao (z5514579)
 
-Kunisuke Ishigaki (z54****3)
+Kunisuke Ishigaki (z5466173)
 
-Zhuo Chen (z55****3)
+Zhuo Chen (z5559483)
 
 
 ---
