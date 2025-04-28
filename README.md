@@ -21,7 +21,7 @@ AdSeek_ready2submit/
 ├── Stage0_rulebase/        # Stage 0: Rule-based model
 │   ├── rule-based_senority.py
 │   ├── rule-based_work_arrangement.py
-│   └── rule-based-salary.py
+│   └── rule-based-salary.py   # Supports CLI-based batch inference
 │
 ├── Stage1_prompt_only/        # Stage 1: Prompt-only inference
 │   ├── Claude_pe.ipynb
@@ -42,6 +42,8 @@ AdSeek_ready2submit/
 │
 ├── Stage3_advanced/           # Stage 3: Advanced techniques (DAPT, POS/NER-based tuning)
 │   ├── DAPT.ipynb
+│   ├── qwen-05b-dapt-promptuning-kaggle.ipynb   # Load DAPT and prompt tuning
+│   ├── qwen-05b-dapt-LoRA.ipynb                 # Load DAPT and LoRA
 │   ├── LoRA_classification_head.ipynb
 │   ├── POS_NER_prompt_tuning_1st.ipynb
 │   └── POS_NER_prompt_tuning_2nd.ipynb
