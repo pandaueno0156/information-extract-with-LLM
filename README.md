@@ -18,11 +18,16 @@ AdSeek_ready2submit/
 │   ├── p_engineering_concat.py
 │   └── prompt_injection&combine.py
 │
+├── Stage0——reulebase/        # Stage 0: Rule-based model
+│   ├── rule-based_senority.py
+│   ├── rule-based_work_arrangement.py
+│   └── rule-based-salary.py
+│
 ├── Stage1_prompt_only/        # Stage 1: Prompt-only inference
 │   ├── Claude_pe.ipynb
 │   ├── GPT_pe.ipynb
 │   ├── Qwen05B_p_eng_inference.ipynb
-│   ├── Qwen25_inference.py     # Supports CLI-based batch inference
+│   └── Qwen25_inference.py     # Supports CLI-based batch inference
 │
 ├── Stage2_LoRA_pt_agents/     # Stage 2: Lightweight fine-tuning with LoRA
 │   ├── agent/                 # Synthetic data generation using Claude and GPT
@@ -33,13 +38,13 @@ AdSeek_ready2submit/
 │   ├── LoRA_qwen05.ipynb
 │   ├── prompt_tuning_qwen05.ipynb
 │   ├── Qwen05_LoRA.py          # Supports CLI-based LoRA fine-tuning
-│   ├── qwen-0.5b-llm_kaggle.ipynb
+│   └── qwen-0.5b-llm_kaggle.ipynb
 │
 ├── Stage3_advanced/           # Stage 3: Advanced techniques (DAPT, POS/NER-based tuning)
 │   ├── DAPT.ipynb
 │   ├── LoRA_classification_head.ipynb
 │   ├── POS_NER_prompt_tuning_1st.ipynb
-│   ├── POS_NER_prompt_tuning_2nd.ipynb
+│   └── POS_NER_prompt_tuning_2nd.ipynb
 │
 ├── eval.py                    # Evaluation script for inference results
 ├── README.md                   # Project overview and usage guide
@@ -90,7 +95,7 @@ python Stage1_prompt_only/Qwen25_inference.py \
 
 ---
 
-### 3. Prompt-tuning, LoRA Fine-Tuning and Agen (Stage 2) (Stage 2)
+### 3. Prompt-tuning, LoRA Fine-Tuning and Agen (Stage 2) 
 
 Use `Qwen05_LoRA.py` for LoRA-based fine-tuning:
 
