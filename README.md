@@ -1,6 +1,6 @@
 # SEEK Industry project - AdSeek
 
-This project focuses on processing, fine-tuning, and inference for job advertisement texts. It covers data cleaning, feature engineering (Stage 1), Prompt-tuning, LoRA-based lightweight fine-tuning, Agent (Stage 2), and advanced methods (Stage 3).
+This project focuses on processing, fine-tuning, and inference for job advertisement texts. It covers data cleaning, rule-based model (Stage 0), feature engineering (Stage 1), Prompt-tuning, LoRA-based lightweight fine-tuning, Agent (Stage 2), and advanced methods (Stage 3).
 
 ## 📂 Project Structure
 
