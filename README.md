@@ -45,7 +45,7 @@ AdSeek_ready2submit/
 │   ├── p_engineering_concat.py
 │   └── prompt_injection&combine.py
 │
-├── Stage0_rulebase/        # Stage 0: Rule-based model
+├── Stage0_rulebase/           # Stage 0: Rule-based model
 │   ├── rule-based_senority.py
 │   ├── rule-based_work_arrangement.py
 │   └── rule-based-salary.py   # Supports CLI-based batch inference
@@ -56,8 +56,8 @@ AdSeek_ready2submit/
 │   ├── Qwen05B_p_eng_inference.ipynb
 │   └── Qwen25_inference.py     # Supports CLI-based batch inference
 │
-├── Stage2_LoRA_pt_agents/     # Stage 2: Lightweight fine-tuning with LoRA
-│   ├── agent/                 # Synthetic data generation using Claude and GPT
+├── Stage2_LoRA_pt_agents/      # Stage 2: Lightweight fine-tuning with LoRA
+│   ├── agent/                  # Synthetic data generation using Claude and GPT
 │   │   ├── gen_claude_arr.ipynb
 │   │   ├── gen_claude_salary.ipynb
 │   │   ├── gen_claude_seniority.ipynb
@@ -67,7 +67,7 @@ AdSeek_ready2submit/
 │   ├── Qwen05_LoRA.py          # Supports CLI-based LoRA fine-tuning
 │   └── qwen-0.5b-llm_kaggle.ipynb
 │
-├── Stage3_advanced/           # Stage 3: Advanced techniques (DAPT, POS/NER-based tuning)
+├── Stage3_advanced/            # Stage 3: Advanced techniques (DAPT, POS/NER-based tuning)
 │   ├── DAPT.ipynb
 │   ├── qwen-05b-dapt-promptuning-kaggle.ipynb   # Load DAPT and prompt tuning
 │   ├── qwen-05b-dapt-LoRA.ipynb                 # Load DAPT and LoRA
@@ -75,7 +75,7 @@ AdSeek_ready2submit/
 │   ├── POS_NER_prompt_tuning_1st.ipynb
 │   └── POS_NER_prompt_tuning_2nd.ipynb
 │
-├── eval.py                    # Evaluation script for inference results
+├── eval.py                     # Evaluation script for inference results
 ├── README.md                   # Project overview and usage guide
 └── requirements.txt            # Python package dependencies
 ```
