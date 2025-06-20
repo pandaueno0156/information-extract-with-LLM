@@ -1,4 +1,4 @@
-# SEEK Industry project
+# Information Extract with LLMs (SEEK Industry project)
 
 ## ⭐ Group: AdSeek
 
