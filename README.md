@@ -2,7 +2,7 @@
 
 ## ⭐ Group: AdSeek
 
-### Team Members:
+### Contribution:
 
 Xiao Chen (z5545738)
 
