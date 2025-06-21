@@ -1,8 +1,6 @@
 # Information Extract with LLMs (SEEK Industry project)
 
-## ⭐ Group: AdSeek
-
-### Contribution:
+## Contribution:
 
 Xiao Chen (z5545738)
 
@@ -15,6 +13,8 @@ Zhuo Chen (z5559483)
 
 ---
 
+## Overview:
+
 #### This project focuses on the processing, fine-tuning, and inference of job advertisement texts.
 #### It is structured across several stages:
 
@@ -26,10 +26,12 @@ Zhuo Chen (z5559483)
 
 - Stage 3: Advanced Methods Exploration
 
+- Stage 4: General inference, Langchain inference, verification
+
 The project systematically progresses from initial data preparation to advanced model deployment.
 
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 AdSeek_ready2submit/
@@ -45,12 +47,12 @@ AdSeek_ready2submit/
 │   ├── p_engineering_concat.py
 │   └── prompt_injection&combine.py
 │
-├── Stage0_rulebase/           # Stage 0: Rule-based model
+├── Stage0_rulebase/            # Stage 0: Rule-based model
 │   ├── rule-based_senority.py
 │   ├── rule-based_work_arrangement.py
-│   └── rule-based-salary.py   # Supports CLI-based batch inference
+│   └── rule-based-salary.py    # Supports CLI-based batch inference
 │
-├── Stage1_prompt_only/        # Stage 1: Prompt-only inference
+├── Stage1_prompt_only/         # Stage 1: Prompt-only inference
 │   ├── Claude_pe.ipynb
 │   ├── GPT_pe.ipynb
 │   ├── Qwen05B_p_eng_inference.ipynb
@@ -74,6 +76,10 @@ AdSeek_ready2submit/
 │   ├── LoRA_classification_head.ipynb
 │   ├── POS_NER_prompt_tuning_1st.ipynb
 │   └── POS_NER_prompt_tuning_2nd.ipynb
+│  
+├── Stage4_inference_and_verification/  # Stage 4: Inference, Langchain, Verification
+│   ├── inference_general.py
+│   ├── inference_langchain.py
 │
 ├── eval.py                     # Evaluation script for inference results
 ├── README.md                   # Project overview and usage guide
@@ -82,7 +88,7 @@ AdSeek_ready2submit/
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Environment Setup
 
@@ -188,12 +194,13 @@ Overall Average Accuracy: 74.74%
 
 ---
 
-## 📝 Notes
+## Notes
 
 - The project is divided into three stages:
   - **Stage 1**: Zero-shot and prompt-engineering baselines.
   - **Stage 2**: Lightweight fine-tuning via LoRA adapters.
   - **Stage 3**: Advanced methods like Domain-Adaptive Pretraining (DAPT) and POS/NER-enhanced prompt tuning.
+  - **Stage 4**: General Inference, Inference with Langchain, and verification of output.
 - File paths must be specified carefully to avoid errors.
 - GPU with FP16 (half-precision) support is highly recommended.
 - Preprocessing scripts are modular for easy modification and experimentation.
