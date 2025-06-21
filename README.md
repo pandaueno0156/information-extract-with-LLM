@@ -26,7 +26,7 @@ Zhuo Chen (z5559483)
 
 - Stage 3: Advanced Methods Exploration
 
-- Stage 4: General inference, Langchain inference, verification
+- Stage 4: General inference, Langchain inference, Verification
 
 The project systematically progresses from initial data preparation to advanced model deployment.
 
