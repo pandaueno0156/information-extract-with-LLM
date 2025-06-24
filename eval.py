@@ -56,6 +56,15 @@ def eval_salary(df):
     print(f"Overall Average Accuracy: {avg_acc:.2%}")
     print('---------------------------------------\n')
 
+def get_task_type(prompt):
+    if '[TASK: Salary]' in prompt:
+        return 'Salary'
+    elif '[TASK: Seniority]' in prompt:
+        return 'Seniority'
+    elif '[TASK: Work Arrangement]' in prompt:
+        return 'Work Arrangement'
+    else:
+        return 'Unknown'
 
 def eval_data(b):
 
@@ -63,10 +72,15 @@ def eval_data(b):
     y_pred = b['y_pred']
 
     b['val'] = y_true == y_pred
-    print('Recall:', sum(b['val']) / len(b))
-    print('salary:', sum(b.iloc[:567]['val']), '/ 567', '-----', f"{sum(b.iloc[:567]['val'])/567 * 100:.2f}%")
-    print('seniority:', sum(b.iloc[567:-99]['val']), '/ 689', '-----', f"{sum(b.iloc[567:-99]['val'])/689 * 100:.2f}%")
-    print('work:', sum(b.iloc[-99:]['val']), '/ 99', '-----', f"{sum(b.iloc[-99:]['val'])/99 * 100:.2f}%")
+
+    b['task_type'] = b['prompt'].apply(get_task_type)
+
+    for task in b['task_type'].unique():
+        if task != 'Unknown':
+            task_data = b[b['task_type'] == task]
+            correct = sum(task_data['val'])
+            total = len(task_data)
+            print(f'{task}: {correct}/{total} - {correct/total * 100:.2f}%')
 
     print('-' * 8, 'sklearn metrics', '-' * 8)
     acc = accuracy_score(y_true, y_pred)
@@ -92,9 +106,11 @@ def main_eval(path_):
 
 if __name__ == '__main__':
 
-    print('Rule-base')
-    folder_path = r'results_collection/Preprocessing_selection/'
+    folder_path = r'results_collection/langchain/'
+    # folder_path = r'results_collection/general/'
+
     files = [folder_path+f for f in os.listdir(folder_path) if f.endswith('.json')]
     for i in files:
+        print(f'\nFile name: {i}')
         main_eval(i)
 
