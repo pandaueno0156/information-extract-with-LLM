@@ -27,6 +27,9 @@ import re
 
 global_re_attempts = 0
 
+# Load test data
+test_path = "./dataset/testset/test_1355.json"
+
 # Load the base model and tokenizer
 model_path = "Qwen/Qwen2.5-0.5B-Instruct"
 peft_model_path = "qwen_dapt_lora_augwork_final_model"  
@@ -68,46 +71,56 @@ llm = HuggingFacePipeline(pipeline=pipe)
 
 # Define task-specific prompt
 TASK_PROMPT = {
-    "Salary": """Task: Extract salary information.
-    Format: [min]-[max]-[currency]-[time_unit]
+    "Salary": """You are an expert at extracting salary information from job postings.
 
-    Valid currency: ["AUD", "SGD", "HKD", "IDR", "THB", "NZD", "MYR", "PHP", "USD", "None"]
-    Valid time_unit: ["HOURLY", "DAILY", "WEEKLY", "MONTHLY", "ANNUAL", "None"]
-    If no salary is found, return: 0-0-None-None
-
+    Extract salary information from the job ad.
+        
+    Output format: [min]-[max]-[currency]-[time_unit]
+    
+    Valid currencies: AUD, SGD, HKD, IDR, THB, NZD, MYR, PHP, USD, None
+    Valid time units: HOURLY, DAILY, WEEKLY, MONTHLY, ANNUAL, None
+        
     Input: {prompt}
+    
     Output:""",
     
-    "Seniority": """Task: Extract seniority level.
-    Valid option: experienced, intermediate, senior, entry level, assistant, lead, head, junior, graduate, trainee, associate, principal, apprentice, executive, manager, director, entry-level, chief, deputy, mid-level, specialist, experienced assistant, supervisor, qualified, student, board, graduate/junior, senior associate, mid-senior
+    "Seniority": """You are an expert at identifying seniority levels in job postings.
     
-    IMPORTANT INSTRUCTIONS:
-    1. Only extract the seniority level.
-    2. ONLY CHOOSE output from Valid option list!
-    3. NEVER INCLUDE ANY explanations or additional text
-
-
+    Extract seniority level from the job ad.
+       
+    Valid seniority options: experienced, intermediate, senior, entry level, assistant, lead, head, junior, graduate, trainee, associate, principal, apprentice, executive, manager, director, entry-level, chief, deputy, mid-level, specialist, experienced assistant, supervisor, qualified, student, board, graduate/junior, senior associate, mid-senior
+    
+    Choose the most appropriate option from the valid seniority list above.
+    
     Input: {prompt}
+    
     Output:""",
     
-    "Work Arrangement": """Task: Extract work arrangement.
-    Options: OnSite, Remote, Hybrid
-    IMPORTANT INSTRUCTIONS:
-    1. The output must be capitalized!
-    2. Output must be a single word!
-    3. NEVER INCLUDE ANY explanations or additional text
+    "Work Arrangement": """You are an expert at identifying work arrangements in job postings.
 
+    Analyze the job posting and determine the work arrangement:
+    - OnSite: Must work from office/specific location, no remote work mentioned
+    - Remote: Can work from home/anywhere, mentions remote work, telecommute, work from home, distributed team, etc.
+    - Hybrid: Combination of office and remote work, flexible arrangements, some days in office
+    
+    Look for these indicators:
+    Remote: "remote", "work from home", "WFH", "telecommute", "distributed", "anywhere", "home-based"
+    Hybrid: "hybrid", "flexible", "mix of remote and office", "some days in office", "2-3 days in office"
+    OnSite: "on-site", "in-office", "office-based", no remote work mentioned
+    
+    Output only: OnSite, Remote, or Hybrid
+    
     Input: {prompt}
+    
     Output:"""
 }
 
 def get_task_prompt(prompt):
-    prompt_lower = prompt.lower()
-    if "salary" in prompt_lower:
+    if "[TASK: Salary]" in prompt:
         return "Salary"
-    elif "seniority" in prompt_lower:
+    elif "[TASK: Seniority]" in prompt:
         return "Seniority"
-    elif "work arrangement" in prompt_lower:
+    elif "[TASK: Work Arrangement]" in prompt:
         return "Work Arrangement"
     return "default" # This will return the default input prompt in case the task type cannot be identified
 
@@ -153,7 +166,7 @@ def validate_response(response, task_type):
         # Validate work arrangement
 
         response = response.strip()
-        valid_arrangements = ["Onsite", "Remote", "Hybrid"]
+        valid_arrangements = ["OnSite", "Remote", "Hybrid"]
 
         if response not in valid_arrangements:
             return False
@@ -216,16 +229,22 @@ def clean_work_response(response):
     output_parts = response.split("Output:")
     if len(output_parts) > 1:
         # Get everything after "Output:"
-        after_output = output_parts[1].strip().upper()
+        after_output = output_parts[1].strip()
 
-        # First try: Check if the ouput after: matches the ALL UpperCase answer
-        if re.match(r"^(ONSITE|HYBRID|REMOTE)$", after_output):
-                return after_output.capitalize()
-        # Second try: Check if the ouput after: matches the exatch word in the after output
-        match = re.search(r"(OnSite|Hybrid|Remote)", after_output, re.IGNORECASE)
-        if match:
-            return match.group(1).capitalize()
+        # First try: Check if the ouput after: matches the extact answer
+        if re.match(r"^(OnSite|Hybrid|Remote)$", after_output):
+            return after_output
         
+        # Second try: Check for case-insensitive matches
+        match = re.search(r"(onsite|hybrid|remote)", after_output, re.IGNORECASE)
+        if match:
+            found_word = match.group(1).lower()
+            if found_word == "onsite":
+                return "OnSite"
+            elif found_word == "hybrid":
+                return "Hybrid"
+            elif found_word == "remote":
+                return "Remote"        
     return "Unknown"
 
 
@@ -289,9 +308,6 @@ def generate_response_with_chain(prompt, max_attempts=5):
     return response
 
 
-# Load test data
-test_path = "./dataset/testset/test_1355.json"
-
 with open(test_path, 'r') as f: #Update with the path to your JSON File.
     data = json.load(f)
 
@@ -322,6 +338,5 @@ print(f'Total re-attempts: {global_re_attempts}')
 df = pd.DataFrame(data)
 df["y_pred"] = answers
 
-# Output for eval.py to test performance
-output_path = "results_collection/dapt_lora_output_langchain_inference.json"
+output_path = "results_collection/dapt_lora_output_langchain_inference_work_filter.json"
 df.to_json(output_path, orient='records', indent=4, force_ascii=False)
