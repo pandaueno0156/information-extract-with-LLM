@@ -2,13 +2,13 @@
 
 ## Contribution:
 
-Xiao Chen (z5545738)
+Xiao Chen 
 
-WanJie Mao (z5514579)
+WanJie Mao 
 
-Kunisuke Ishigaki (z5466173)
+Kunisuke Ishigaki 
 
-Zhuo Chen (z5559483)
+Zhuo Chen 
 
 
 ---
@@ -200,7 +200,7 @@ Overall Average Accuracy: 74.74%
   - **Stage 1**: Zero-shot and prompt-engineering baselines.
   - **Stage 2**: Lightweight fine-tuning via LoRA adapters.
   - **Stage 3**: Advanced methods like Domain-Adaptive Pretraining (DAPT) and POS/NER-enhanced prompt tuning.
-  - **Stage 4**: General Inference, Inference with Langchain, and verification of output.
+  - **Stage 4**: General Inference with model.generate(), Inference with Langchain, and verification of output.
 - File paths must be specified carefully to avoid errors.
 - GPU with FP16 (half-precision) support is highly recommended.
 - Preprocessing scripts are modular for easy modification and experimentation.
