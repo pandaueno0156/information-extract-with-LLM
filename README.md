@@ -1,4 +1,4 @@
-# Information Extract with LLMs (SEEK Industry project)
+# Information Extraction with LLMs (SEEK Industry project)
 
 ## Contribution:
 
