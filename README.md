@@ -71,8 +71,8 @@ AdSeek_ready2submit/
 │
 ├── Stage3_advanced/            # Stage 3: Advanced techniques (DAPT, POS/NER-based tuning)
 │   ├── DAPT.ipynb
-│   ├── qwen-05b-dapt-promptuning-kaggle.ipynb   # Pretrained DAPT and Prompt tuning
-│   ├── qwen-05b-train-dapt-LoRA.ipynb           # Pretrained DAPT and LoRA
+│   ├── qwen-05b-train-dapt-PrompTuning.ipynb   # Pretrained DAPT and Prompt tuning
+│   ├── qwen-05b-train-dapt-LoRA.ipynb          # Pretrained DAPT and LoRA
 │   ├── LoRA_classification_head.ipynb
 │   ├── POS_NER_prompt_tuning_1st.ipynb
 │   └── POS_NER_prompt_tuning_2nd.ipynb
