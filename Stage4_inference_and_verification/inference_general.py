@@ -169,17 +169,24 @@ def clean_work_response(response):
 
     if len(output_parts) > 1:
         # Get everything after "Output:"
-        after_output = output_parts.strip().upper()
+        after_output = output_parts.strip()
 
-        # First try: Check if the ouput after: matches the ALL UpperCase answer
-        if re.match(r"^(ONSITE|HYBRID|REMOTE)$", after_output):
-                return after_output.capitalize()
-        # Second try: Check if the ouput after: matches the exatch word in the after output
-        match = re.search(r"(OnSite|Hybrid|Remote)", after_output, re.IGNORECASE)
-        if match:
-            return match.group(1).capitalize()
+        # First try: Check if the ouput after: matches the extact answer
+        if re.match(r"^(OnSite|Hybrid|Remote)$", after_output):
+            return after_output
         
+        # Second try: Check for case-insensitive matches
+        match = re.search(r"(onsite|hybrid|remote)", after_output, re.IGNORECASE)
+        if match:
+            found_word = match.group(1).lower()
+            if found_word == "onsite":
+                return "OnSite"
+            elif found_word == "hybrid":
+                return "Hybrid"
+            elif found_word == "remote":
+                return "Remote"        
     return "Unknown"
+
 
 # Generate response
 def generate_response(prompt):
