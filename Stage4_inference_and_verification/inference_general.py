@@ -262,7 +262,7 @@ with open(test_path, 'r') as f: #Update with the path to your JSON File.
     data = json.load(f)
 
 
-# Example usage in your main loop:
+# Example usage in main loop:
 print("\nStart inference...")
 
 t0 = time.time()
@@ -273,7 +273,6 @@ for i, item in enumerate(data):
     answer = generate_response_with_verification(p, max_attempts=5)
     answers.append(answer)
     
-    # Optional: Print progress and validation status
     if i % 50 == 0:
         print(f"Processed {i} items...")
         
