@@ -63,7 +63,7 @@ AdSeek_ready2submit/
 │   │   ├── gen_claude_arr.ipynb
 │   │   ├── gen_claude_salary.ipynb
 │   │   ├── gen_claude_seniority.ipynb
-│   │   └── gen_gpt.ipynb
+│   │   └── gpt_mulitAgent.py   # Autogen GPT Pipeline 
 │   ├── LoRA_qwen05.ipynb
 │   ├── prompt_tuning_qwen05.ipynb
 │   ├── Qwen05_LoRA.py          # Supports CLI-based LoRA fine-tuning
@@ -198,7 +198,7 @@ Overall Average Accuracy: 74.74%
 
 - The project is divided into three stages:
   - **Stage 1**: Zero-shot and prompt-engineering baselines.
-  - **Stage 2**: Lightweight fine-tuning via LoRA adapters.
+  - **Stage 2**: Lightweight fine-tuning via LoRA adapters and AutoGen pipeline.
   - **Stage 3**: Advanced methods like Domain-Adaptive Pretraining (DAPT) and POS/NER-enhanced prompt tuning.
   - **Stage 4**: General Inference with model.generate(), Inference with Langchain, and verification of output.
 - File paths must be specified carefully to avoid errors.
