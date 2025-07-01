@@ -7,8 +7,6 @@ import time
 import logging
 import pathlib
 
-start_time = time.time()  
-
 logging.basicConfig(level=logging.ERROR)
 
 load_dotenv()
@@ -18,7 +16,6 @@ llm_config = {
     # "api_key": "", 
     "base_url": "https://api.openai.com/v1",
 }
-
 
 # Planner Agent
 planner_agent = autogen.AssistantAgent(
