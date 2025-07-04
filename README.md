@@ -60,10 +60,9 @@ AdSeek_ready2submit/
 │
 ├── Stage2_LoRA_pt_agents/      # Stage 2: Lightweight fine-tuning with LoRA
 │   ├── agent/                  # Synthetic data generation using Claude and GPT
-│   │   ├── gen_claude_arr.ipynb
-│   │   ├── gen_claude_salary.ipynb
-│   │   ├── gen_claude_seniority.ipynb
+│   │   ├── claude_multiAgent.py# Autogen Claude Pipeline
 │   │   └── gpt_mulitAgent.py   # Autogen GPT Pipeline 
+│   │ 
 │   ├── LoRA_qwen05.ipynb
 │   ├── prompt_tuning_qwen05.ipynb
 │   ├── Qwen05_LoRA.py          # Supports CLI-based LoRA fine-tuning
