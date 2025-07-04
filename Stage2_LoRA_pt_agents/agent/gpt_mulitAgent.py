@@ -13,7 +13,7 @@ load_dotenv()
 
 llm_config = {
     "model": "gpt-3.5-turbo",
-    # "api_key": "", 
+    "api_key": os.getenv("OPENAI_API_KEY"), 
     "base_url": "https://api.openai.com/v1",
 }
 
@@ -319,8 +319,6 @@ manager = autogen.GroupChatManager(groupchat=groupchat, llm_config=llm_config)
 
 
 # print_groupchat_log(groupchat)
-
-
 
 # user_proxy_agent.initiate_chat(
 #     manager,
