@@ -191,9 +191,9 @@ Overall Average Accuracy: 75.79%
 ---------------------------------------
 
  ==================== Claude_haiku_mulitAgent_results.json ====================
-Salary: 471/567 - 83.07%
-Seniority: 371/689 - 53.85%
-Work Arrangement: 86/99 - 86.87%
+Salary: 471 / 567 - 83.07%
+Seniority: 371 / 689 - 53.85%
+Work Arrangement: 86 / 99 - 86.87%
 
 -------- sklearn metrics --------
 Accuracy: 0.6849
