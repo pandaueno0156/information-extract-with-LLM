@@ -194,6 +194,7 @@ Overall Average Accuracy: 75.79%
 Salary: 471/567 - 83.07%
 Seniority: 371/689 - 53.85%
 Work Arrangement: 86/99 - 86.87%
+
 -------- sklearn metrics --------
 Accuracy: 0.6849
 Macro Recall: 0.5897
