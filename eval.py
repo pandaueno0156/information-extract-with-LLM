@@ -80,8 +80,8 @@ def eval_data(b):
             task_data = b[b['task_type'] == task]
             correct = sum(task_data['val'])
             total = len(task_data)
-            print(f'{task}: {correct}/{total} - {correct/total * 100:.2f}%')
-
+            print(f'{task}: {correct} / {total} - {correct/total * 100:.2f}%')
+    print()
     print('-' * 8, 'sklearn metrics', '-' * 8)
     acc = accuracy_score(y_true, y_pred)
     recall = recall_score(y_true, y_pred, average='macro', zero_division=0)
@@ -106,8 +106,10 @@ def main_eval(path_):
 
 if __name__ == '__main__':
 
-    folder_path = r'results_collection/langchain/'
-    # folder_path = r'results_collection/general/'
+    # Please adjust the folder path to run the testing json files
+    folder_path = r'results_collection/general/'
+    # folder_path = r'results_collection/langchain/'
+    # folder_path = r'results_collection/autogen/'
 
     files = [folder_path+f for f in os.listdir(folder_path) if f.endswith('.json')]
     for i in files:
