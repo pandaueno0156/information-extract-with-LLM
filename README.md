@@ -50,22 +50,22 @@ AdSeek_ready2submit/
 ├── Stage0_rulebase/            # Stage 0: Rule-based model
 │   ├── rule-based_senority.py
 │   ├── rule-based_work_arrangement.py
-│   └── rule-based-salary.py    # Supports CLI-based batch inference
+│   └── rule-based-salary.py            # Supports CLI-based batch inference
 │
 ├── Stage1_prompt_only/         # Stage 1: Prompt-only inference
 │   ├── Claude_pe.ipynb
 │   ├── GPT_pe.ipynb
 │   ├── Qwen05B_p_eng_inference.ipynb
-│   └── Qwen25_inference.py     # Supports CLI-based batch inference
+│   └── Qwen25_inference.py             # Supports CLI-based batch inference
 │
 ├── Stage2_LoRA_pt_agents/      # Stage 2: Lightweight fine-tuning with LoRA
-│   ├── agent/                  # Synthetic data generation using Claude and GPT
-│   │   ├── claude_multiAgent.py# Autogen Claude Pipeline
-│   │   └── gpt_mulitAgent.py   # Autogen GPT Pipeline 
+│   ├── agent/                          # Synthetic data generation using Claude and GPT
+│   │   ├── claude_multiAgent.py        # Autogen Claude Multi-Task Agent Pipeline
+│   │   └── gpt_mulitAgent.py           # Autogen GPT Multi-Task Agent Pipeline 
 │   │ 
 │   ├── LoRA_qwen05.ipynb
 │   ├── prompt_tuning_qwen05.ipynb
-│   ├── Qwen05_LoRA.py          # Supports CLI-based LoRA fine-tuning
+│   ├── Qwen05_LoRA.py                  # Supports CLI-based LoRA fine-tuning
 │   └── qwen-0.5b-llm_kaggle.ipynb
 │
 ├── Stage3_advanced/            # Stage 3: Advanced techniques (DAPT, POS/NER-based tuning)
@@ -80,9 +80,9 @@ AdSeek_ready2submit/
 │   ├── inference_general.py
 │   ├── inference_langchain.py
 │
-├── eval.py                     # Evaluation script for inference results
-├── README.md                   # Project overview and usage guide
-└── requirements.txt            # Python package dependencies
+├── eval.py                             # Evaluation script for inference results
+├── README.md                           # Project overview and usage guide
+└── requirements.txt                    # Python package dependencies
 ```
 
 ---
@@ -172,22 +172,39 @@ Metrics include: Self-defined Salary Accuracy, Accuracy, Recall, Macro F1-score,
 For example:
 
 ```
- ==================== LoRA_05B_dapt_work_aug_results.json ====================
-Recall: 0.6583025830258302
-salary: 482 / 567 ----- 85.01%
-seniority: 356 / 689 ----- 51.67%
-work: 54 / 99 ----- 54.55%
+ ==================== LoRA_05B_dapt_work_aug_genInf_results.json ==============
+Salary: 496 / 567 - 87.48%
+Seniority: 355 / 689 - 51.52%
+Work Arrangement: 58 / 99 - 58.59%
+
 -------- sklearn metrics --------
-Accuracy: 0.6583
-Macro Recall: 0.5219
-Macro F1-score: 0.5235
+Accuracy: 0.6708
+Macro Recall: 0.6101
+Macro F1-score: 0.6124
 
 ----- Salary Format Evaluation -----
-Min Salary Accuracy: 74.25%
-Max Salary Accuracy: 73.72%
-Currency Accuracy: 76.37%
-Frequency Accuracy: 74.60%
-Overall Average Accuracy: 74.74%
+Min Salary Accuracy: 75.49%
+Max Salary Accuracy: 75.66%
+Currency Accuracy: 77.25%
+Frequency Accuracy: 74.78%
+Overall Average Accuracy: 75.79%
+---------------------------------------
+
+ ==================== Claude_haiku_mulitAgent_results.json ====================
+Salary: 471/567 - 83.07%
+Seniority: 371/689 - 53.85%
+Work Arrangement: 86/99 - 86.87%
+-------- sklearn metrics --------
+Accuracy: 0.6849
+Macro Recall: 0.5897
+Macro F1-score: 0.5857
+
+----- Salary Format Evaluation -----
+Min Salary Accuracy: 72.31%
+Max Salary Accuracy: 71.25%
+Currency Accuracy: 76.54%
+Frequency Accuracy: 77.07%
+Overall Average Accuracy: 74.29%
 ---------------------------------------
 ```
 
@@ -195,7 +212,7 @@ Overall Average Accuracy: 74.74%
 
 ## Notes
 
-- The project is divided into three stages:
+- The project is divided into four stages:
   - **Stage 1**: Zero-shot and prompt-engineering baselines.
   - **Stage 2**: Lightweight fine-tuning via LoRA adapters and AutoGen pipeline.
   - **Stage 3**: Advanced methods like Domain-Adaptive Pretraining (DAPT) and POS/NER-enhanced prompt tuning.
